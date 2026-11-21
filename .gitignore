@@ -1,0 +1,18 @@
+
+# Compiled C programs
+task1
+task2
+task3
+task4
+task5
+
+# Object files
+*.o
+
+# Temporary files
+*.tmp
+*.log
+
+# Editor files
+*~
+*.swp
