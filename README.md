@@ -1,45 +1,90 @@
 
 # Investigating Process Lifecycles and OS Interaction
 
-## About the Project
+## Introduction
 
-This project explores process lifecycles and operating system interaction using C programming in a Linux environment.
+This project focuses on understanding process lifecycles and operating system interaction using C programming in a Linux environment.
 
-The practical activities were performed using Docker Ubuntu and basic Linux commands.
+The practical activities were performed using Docker Ubuntu, GCC compiler, and Linux commands.
 
 ## Objectives
 
-- Understand how processes are created and executed.
-- Identify Process ID (PID) and Parent Process ID (PPID).
-- Understand program exit codes.
-- Practise standard input and output.
-- Explore conditional execution and process termination.
+- To understand how a process is created and executed in Linux.
+- To learn how to run a process in the background.
+- To identify a process using its Process ID (PID) and Parent Process ID (PPID).
+- To understand process termination and exit status codes.
+- To demonstrate standard input (stdin) and standard output (stdout).
+- To understand conditional execution and process termination using C programming.
 
-## Tasks
+## Tools and Technologies Used
+
+- Operating System: Linux (Ubuntu)
+- Programming Language: C
+- Text Editor: GNU Nano
+- Compiler: GCC
+- Container Platform: Docker
+- Linux Commands: ps, echo, sleep, gcc, nano, ls
+- System Calls: getpid(), getppid(), sleep()
+
+## Project Tasks
 
 ### Task 1: Long-Running Process
-Demonstrates background process execution and process monitoring using Linux commands.
+
+Created a C program that runs for approximately 30 seconds using a loop and sleep() function.
+
+The program was executed in the background using the ampersand (&) symbol.
+
+Commands:
+```bash
+gcc task1_alive.c -o task1
+./task1 &
+ps aux | grep task1
+```
 
 ### Task 2: PID and PPID
-Uses `getpid()` and `getppid()` to identify process and parent process IDs.
+
+Used getpid() and getppid() to retrieve the current process ID and parent process ID.
+
+Commands:
+```bash
+gcc task2_identity.c -o task2
+./task2 &
+ps -p <PID> -o pid,ppid,cmd
+```
+
+Replace <PID> with the actual process ID displayed by the program.
 
 ### Task 3: Exit Codes
-Demonstrates successful and unsuccessful program termination using return values and `echo $?`.
+
+Demonstrated successful and unsuccessful program termination using return 0 and return 1.
+
+Commands:
+```bash
+gcc task3_exit.c -o task3
+./task3
+echo $?
+```
 
 ### Task 4: Standard I/O
-Uses `scanf()` and `printf()` to accept and display user input.
+
+Used scanf() to receive user input and printf() to display output.
+
+Commands:
+```bash
+gcc task4_input.c -o task4
+./task4
+```
 
 ### Task 5: Conditional Execution and Termination
-Uses user input and conditional statements to control program execution and termination.
 
-## Technologies and Tools
+Used getpid(), scanf(), if-else statements, sleep(), and return values to control program execution.
 
-- C Programming
-- Docker Ubuntu
-- GCC Compiler
-- Linux Terminal
-- GNU Nano
-- Linux Process Commands
+Commands:
+```bash
+gcc task5_control.c -o task5
+./task5
+echo $?
+```
 
 ## Project Structure
 
@@ -69,39 +114,52 @@ Investigating-Process-Lifecycles/
 
 ## Environment Setup
 
-Start an Ubuntu container:
+Start an Ubuntu Docker container:
 
 ```bash
 docker run -it --name process-lab ubuntu:latest bash
 ```
 
-Install the required tools inside Ubuntu:
+Install required packages:
 
 ```bash
 apt update
 apt install gcc nano procps -y
 ```
 
-Check GCC installation:
+Verify GCC installation:
 
 ```bash
 gcc --version
 ```
 
-## Compilation and Execution
+## Compilation
+
+Each C source file can be compiled using GCC.
 
 Example:
 
 ```bash
-gcc src/task1_alive.c -o task1
+gcc task1_alive.c -o task1
 ./task1
 ```
 
-Refer to the individual source files for each practical task.
-
 ## Learning Outcomes
 
-This laboratory improved my understanding of Linux processes, process identification, exit status, standard input/output, and conditional execution using C programming.
+This laboratory helped develop practical knowledge of:
+
+- Linux process management.
+- Background process execution.
+- Process identification using PID and PPID.
+- Program exit status verification.
+- Standard input and output.
+- Conditional execution and process termination.
+
+## Conclusion
+
+The five practical tasks demonstrated different aspects of process management and operating system interaction using C programming in Linux.
+
+The practical use of C functions and Linux commands improved the understanding of how processes are executed, monitored, and terminated.
 
 ## Author
 
